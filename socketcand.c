@@ -438,14 +438,12 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 
-#ifdef DEBUG
 		if(verbose_flag)
 			printf("setting SO_REUSEADDR\n");
 		i = 1;
 		if(setsockopt(sl, SOL_SOCKET, SO_REUSEADDR, &i, sizeof(i)) <0) {
 			perror("setting SO_REUSEADDR failed");
 		}
-#endif
 
 		PRINT_VERBOSE("binding socket to %s:%d\n", inet_ntoa(saddr.sin_addr), ntohs(saddr.sin_port));
 		if(bind(sl,(struct sockaddr*)&saddr, sizeof(saddr)) < 0) {

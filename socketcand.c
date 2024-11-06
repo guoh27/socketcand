@@ -341,6 +341,9 @@ int main(int argc, char **argv)
 	/* if daemon mode was activated the syslog must be opened */
 	if(daemon_flag) {
 		openlog("socketcand", 0, LOG_DAEMON);
+	} else {
+		setvbuf(stdout, NULL, _IOLBF, 0);
+		setvbuf(stderr, NULL, _IOLBF, 0);
 	}
 
 
